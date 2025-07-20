@@ -97,3 +97,25 @@ class Computer {
 }
 Computer comp1 = new Computer(new WiredMouse());
 Computer comp2 = new Computer(new BluetoothMouse());
+
+//For the above example tight coupling
+class WiredMouse {
+    void click() {
+        System.out.println("Wired Mouse clicked");
+    }
+}
+
+class WirelessMouse {
+    void click() {
+        System.out.println("Wireless Mouse clicked");
+    }
+}
+
+class Computer {
+    WiredMouse mouse = new WiredMouse();  // Direct dependency (tight coupling)
+
+    void useMouse() {
+        mouse.click();
+    }
+}
+
