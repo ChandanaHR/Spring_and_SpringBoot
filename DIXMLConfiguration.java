@@ -55,3 +55,51 @@ public class Nurse {
 		System.out.println("Nurse is Assisting");
 	}
 }
+
+
+
+Create an interface Staff.java
+	//Staff.java
+	package com.example1.dependencyinjection;
+
+public interface Staff {
+	void assist();
+}
+
+
+//Doctor.java
+package com.example1.dependencyinjection;
+
+public class Doctor implements Staff {
+	public void assist() {
+		System.out.println("Doctor is Assisting");
+	}
+}
+
+//Nurse.java
+package com.example1.dependencyinjection;
+
+public class Nurse implements Staff {
+	public void assist() {
+		System.out.println("Nurse is Assisting");
+	}
+}
+
+//Main.java
+package com.example1.dependencyinjection;
+
+import org.springframework.core.SpringVersion;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//System.out.println("Spring version:" +SpringVersion.getVersion());
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		Staff staff = context.getBean(Doctor.class);
+		staff.assist();
+		}
+
+}
